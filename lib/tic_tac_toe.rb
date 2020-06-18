@@ -21,17 +21,17 @@ end
     user_input.to_i - 1
   end
 
-def move(board, location, current_player = "X")
-  board[location.to_i-1] = current_player
-end
+  def move(position, char)
+    @board[position] = char
+  end
 
-def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
-end
+  def position_taken?(index_i)
+    ((@board[index_i] == "X") || (@board[index_i] == "O"))
+  end
 
-def valid_move?(board, position)
-  position.to_i.between?(1,9) && !position_taken?(board, position.to_i-1)
-end
+  def valid_move?(index)
+    index.between?(0,8) && !position_taken?(index)
+  end
 
 def turn(board)
   puts "Please enter 1-9:"
